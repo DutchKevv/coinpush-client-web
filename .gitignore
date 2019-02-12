@@ -1,0 +1,21 @@
+# editors
+.DS_Store
+.idea/
+.vscode/
+
+# dirs
+node_modules
+dist
+/_data
+.tmp
+_log
+# server-*/dist
+
+# files
+npm-debug.log
+package-lock.json
+*.map
+log.txt
+**/src/**/*.js
+**/src/**/*.map
+.gradle

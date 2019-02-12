@@ -1,7 +1,6 @@
 <!-- login -->
 <form class="row table-nav" [formGroup]="loginForm" *ngIf="(activeForm$ | async) === 'login'">
-    <button (click)="fbLogin(event)" mat-button [disabled]="busy$ | async"
-        class="btn-facebook">Facebook</button>
+    
     <mat-form-field>
         <input matInput type="text" formControlName=email required placeholder="Email" autofocus>
     </mat-form-field>
@@ -42,9 +41,10 @@
     <mat-error *ngIf="error$ | async as error">
         <mat-icon>error_outline</mat-icon>{{error}}
     </mat-error>
-    <button mat-button mat-dialog-close [disabled]="busy$ | async">Cancel</button>
-
+  
     <ng-container *ngIf="activeForm$ | async as activeForm">
+        <button *ngIf="activeForm === 'login'" (click)="fbLogin(event)" mat-button [disabled]="busy$ | async" class="btn-facebook">Facebook</button>
+        <button mat-button mat-dialog-close [disabled]="busy$ | async">Cancel</button>
         <button *ngIf="activeForm === 'login'" mat-button (click)="activeForm$.next('register')"
             [disabled]="(busy$ | async)">Register</button>
         <button *ngIf="activeForm === 'login'" mat-button mat-raised-button color="primary" (click)="login()"

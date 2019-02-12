@@ -126,7 +126,7 @@ export class InstrumentListComponent implements OnInit, OnDestroy {
 
 		this.activeFilter = filter;
 
-		// this.toggleFilterNav(undefined, false);
+		this._toggleFilterNav(undefined, false);
 		let symbols = [];
 
 		switch (filter) {

@@ -12,6 +12,7 @@ import { DeviceService } from "./services/device/device.service";
 import { AdsService } from "./services/ads/ads.service";
 import { ConfigService } from "./services/config/config.service";
 import { IndicatorService } from "./services/indicator.service";
+import { AccountService } from "./services/account/account.service";
 
 declare let window: any;
 declare let navigator: any;
@@ -74,6 +75,7 @@ export class AppComponent implements OnInit {
 	constructor(
 		public userService: UserService,
 		public authenticationService: AuthService,
+		public accountService: AccountService,
 		private _eventService: EventService,
 		private _cacheService: CacheService,
 		private _socketService: SocketService,

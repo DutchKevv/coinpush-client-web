@@ -34,7 +34,7 @@
     "@angular/platform-browser": "8.0.0-beta.3",
     "@angular/router": "8.0.0-beta.3",
     "bootstrap": "4.3.0",
-    "coinpush": "file:../shared/modules/coinpush",
+    "coinpush": "git@github.com:DutchKevv/coinpush-shared.git",
     "deepmerge": "3.1.0",
     "highcharts": "7.0.3",
     "localforage": "1.7.3",

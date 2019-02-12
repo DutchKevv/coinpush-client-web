@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit, IModalComponent {
 	@ViewChild('modalFooter') public modalFooterRef: ElementRef;
 
 	public modalOptions = {
-		width: '400px',
+		// width: '400px',
 		title: 'Login'
 	};
 

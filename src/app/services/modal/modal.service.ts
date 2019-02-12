@@ -25,7 +25,9 @@ export class ModalService {
 
         const dialog = this._dialog.open(ModalComponent, {
             autoFocus: options.autoFocus,
-            width: options.width,
+            width: '100%',
+            maxWidth: '100vw',
+            maxHeight: '100vh',
             data: options
         });
 

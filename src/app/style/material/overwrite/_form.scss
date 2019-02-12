@@ -100,3 +100,13 @@ mat-form-field.mat-form-field-no-border {
 .mat-autocomplete-panel.mat-autocomplete-visible {
     width: 250px !important;
 }
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px #222122 inset !important;
+    color: white !important;
+    -webkit-text-fill-color: white !important;
+}
