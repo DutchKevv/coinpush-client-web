@@ -1,0 +1,12 @@
+version: '3.3'
+
+services:
+
+  cp-client-web:
+    environment:
+      - NODE_ENV=development
+    ports:
+      - 4200:4200
+    command: npm start
+    volumes:
+       - ./src:/usr/src/app/client-web/src

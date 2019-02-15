@@ -1,0 +1,12 @@
+version: '3.3'
+
+services:
+
+  cp-client-web:
+    image: registry.coinpush.app/client-web
+    container_name: cp-client-web
+    build:
+      context: ../
+      dockerfile: ./coinpush-client-web/Dockerfile
+    volumes:
+      - /usr/src/app/client-web/node_modules
