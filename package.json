@@ -16,7 +16,9 @@
     "build-verbose": "ng build --build-optimizer --prod --stats-json --output-hashing=none --verbose > build.txt",
     "load-symbol-images": "node ./tools/load-symbol-images.js",
     "build-spritesheet": "node ./tools/build-spritesheet.js",
-    "show-report": "webpack-bundle-analyzer ../static/clients/web/stats.json"
+    "show-report": "webpack-bundle-analyzer ../static/clients/web/stats.json",
+    "d-build": "docker-compose build",
+    "d-build-prod": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml build --no-cache"
   },
   "author": "HK Brandsma",
   "license": "Apache-2.0",
@@ -34,7 +36,7 @@
     "@angular/platform-browser": "8.0.0-beta.3",
     "@angular/router": "8.0.0-beta.3",
     "bootstrap": "4.3.0",
-    "coinpush": "git@github.com:DutchKevv/coinpush-shared.git",
+    "coinpush": "file:../coinpush-shared/",
     "deepmerge": "3.1.0",
     "highcharts": "7.0.3",
     "localforage": "1.7.3",
