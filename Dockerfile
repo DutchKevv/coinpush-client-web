@@ -8,6 +8,6 @@ COPY /coinpush-shared /usr/src/app/coinpush-shared
 
 # client
 WORKDIR /usr/src/app/client-web
-COPY ./coinpush-client-web//package.json ./coinpush-client-web/angular.json ./
+COPY ./coinpush-client-web/*.json ./
 RUN npm i --quiet --no-progress
 COPY ./coinpush-client-web/src ./src

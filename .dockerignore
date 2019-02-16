@@ -5,6 +5,7 @@
 ### global
 **/Dockerfile
 **/node_modules
+**/package-lock.json
 **/dist
 **/_log
 **/npm-debug.log
