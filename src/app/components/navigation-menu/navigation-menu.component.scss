@@ -1,16 +1,6 @@
 @import '../../style/variables/variables';
 
 :host {
-    // &.show {
-    //     animation: moveIn .2s ease-in-out forwards;
-
-    //     .nav-overlay {
-    //         display: block;
-            
-    //         animation: fadeIn .3s;
-    //     }
-    // }
-
     background: $background-light;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -19,7 +9,6 @@
     display: none;
     position: absolute;
     top: 0;
-    // transform: translateX(-250px);
     bottom: 0;
     z-index: 800;
 
@@ -27,8 +16,6 @@
         display: block;
         position: fixed;
         left: 0;
-        // transform: none;
-        // transform: translateX(0px);
     }
 }
 
@@ -76,14 +63,4 @@
             text-overflow: ellipsis;
         }
     }
-}
-
-@keyframes moveIn {
-    from { transform: translateX(-250px); }
-    to { transform: translateX(0); }
-}
-
-@keyframes moveOut {
-    from { transform: translateX(0); }
-    to { transform: translateX(-250px); }
 }

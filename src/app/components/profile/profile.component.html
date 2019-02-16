@@ -4,10 +4,9 @@
         <div class="meta-data">
             <h3>{{user.options.name || '&nbsp;'}}</h3>
             
-            
             <div class="profile-details-meta-container">
-                <button *ngIf="!isSelf && !user.options.iFollow" (click)="toggleFollow(user, true)" class="btn btn-sm btn-success ">Follow</button>
-                <button *ngIf="!isSelf && user.options.iFollow" (click)="toggleFollow(user, false)" class="btn btn-sm btn-danger ">UnFollow</button>
+                <button mat-button mat-raised-button color="primary" *ngIf="!isSelf && !user.options.iFollow" (click)="toggleFollow(user, true)">Follow</button>
+                <button mat-button mat-raised-button color="primary" *ngIf="!isSelf && user.options.iFollow" (click)="toggleFollow(user, false)">UnFollow</button>
             </div>
         </div>
     </div>

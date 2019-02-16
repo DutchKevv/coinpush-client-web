@@ -1,24 +1,18 @@
 @import '~bootstrap/scss/_functions';
 @import '~bootstrap/scss/_variables';
 @import '~bootstrap/scss/_mixins';
-@import '~bootstrap/scss/_buttons';
-@import '~bootstrap/scss/_grid';
-@import '~bootstrap/scss/_forms';
-@import '~bootstrap/scss/utilities/_sizing';
-@import '~bootstrap/scss/utilities/_visibility';
 
 @import '../../style/variables/variables';
-@import '../../style/helpers/spinner';
 
 .active {
     background: $general-active;
 }
 
-.fa-arrow-up {
+.arrow-up {
     color: $font-color-up;
 }
 
-.fa-arrow-down {
+.arrow-down {
     color: $font-color-down;   
 }
 
@@ -59,18 +53,17 @@ header {
     flex-shrink: 0;
     height: 40px;
 
-    i {
-        font-size: 26px;
+    mat-icon {
+        font-size: 24px;
+        line-height: 30px;
     }
 
-    .fa-close {
+    mat-icon:last-child {
         margin-left: auto;
         cursor: pointer;
     }
 
-    .fa-bell {
-        font-size: 24px;
-        margin-top: 2px;
+    mat-icon:first-child {
         margin-right: 10px;
     }
 
@@ -90,6 +83,11 @@ main {
         height: 100%;
         overflow: auto;
         -webkit-overflow-scrolling: touch;
+    }
+
+    .row {
+        display: flex;
+        padding: 6px;
     }
 }
 
@@ -136,10 +134,16 @@ form {
     border-radius: 0;
     border: none;
     padding: 7px 20px;
+    background: green;
 
-    i {
-        font-size: 16px;
-        line-height: 22px;
+    &:first-child {
+        background: red;
+    }
+
+    span {
+        font-size: 28px;
+        line-height: 26px;
+        padding: 0px 6px;
     }
 
     @media only screen and (min-width : 992px) { 
@@ -147,19 +151,17 @@ form {
     }
 }
 
-.form-control {
+.input-number {
     padding: 2px 8px;
     border-radius: 0;
     border: none;
     font-size: 16px;
     line-height: 25px;
-}
-
-input[type=text] {
     margin: 0;
     background: #353535;
     color: white;
     font-size: 16px;
+    width: 100%;
     
     &:disabled {
         background: #353535;
@@ -182,7 +184,7 @@ input[type=text] {
         line-height: 18px;
     }
 
-    .fa {
+    mat-icon {
         margin: 0 10px;
         padding-right: 0;
         font-size: 16px;
@@ -193,7 +195,7 @@ input[type=text] {
         }
     }
 
-    .fa-trash {
+    .deleteIcon {
         cursor: pointer;
         transition: transform .3s ease;
 
@@ -214,10 +216,7 @@ input[type=text] {
 
 .footer-new-alarm {
     display: flex;
-
-    > div {
-        width: 50%;
-    }
+    justify-content: space-between;
 
     p {
         line-height: 20px;

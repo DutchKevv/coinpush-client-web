@@ -9,7 +9,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "ng serve --proxy-config ./src/proxy.conf.json",
+    "start": "ng serve --proxy-config ./src/proxy.conf.json --host 0.0.0.0 --poll 100",
     "build": "npm run prod",
     "prod": "ng build --prod --no-progress",
     "build-stats": "ng build --build-optimizer --prod --aot --stats-json --output-hashing=none && npm run show-report",

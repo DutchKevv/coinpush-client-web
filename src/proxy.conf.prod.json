@@ -1,10 +1,10 @@
 {
     "/api/*": {
-        "target": "http://149.210.227.14:3100",
+        "target": "https://coinpush.app",
         "secure": false
     },
     "/socket.io/*": {
-        "target": "http://149.210.227.14:3100",
+        "target": "http://coinpush.app",
         "secure": false,
         "ws": true
     }

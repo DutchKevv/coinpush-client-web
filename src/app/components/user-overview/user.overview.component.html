@@ -1,13 +1,13 @@
 <ul class="filter-options d-none d-xl-block">
-    <li class="form-group">
-        <label for="filterCountry">PEOPLE FROM</label>
-        <select class="form-control" id="filterCountry" (change)="onChangeCountry($event.target.value)">
-            <option value="">Everywhere</option>
-            <optgroup>
-                <option *ngFor="let country of countries" [attr.value]="country.code">{{country.name}}</option>
-            </optgroup>
-        </select>
-    </li>
+    <mat-form-field>
+        <mat-select placeholder="PEOPLE FROM">
+            <mat-option></mat-option>
+            <mat-option value="">Everywhere</mat-option>
+            <!-- <optgroup> -->
+            <mat-option *ngFor="let country of countries" [value]="country.code">{{country.name}}</mat-option>
+            <!-- </optgroup> -->
+        </mat-select>
+    </mat-form-field>
 </ul>
 
 <h2 class="item-row-header">Newest members</h2>
@@ -31,8 +31,10 @@
                     </p>
                 </div>
                 <div *ngIf="options._id !== selfId">
-                    <button *ngIf="!options.iFollow" (click)="toggleFollow(model, true)" class="btn btn-sm btn-success pull-right">Follow</button>
-                    <button *ngIf="options.iFollow" (click)="toggleFollow(model, false)" class="btn btn-sm btn-danger pull-right">UnFollow</button>
+                    <button mat-button mat-raised-button color="primary" *ngIf="!options.iFollow"
+                        (click)="toggleFollow(model, true)" class="pull-right">Follow</button>
+                    <button mat-button mat-raised-button color="primary" *ngIf="options.iFollow"
+                        (click)="toggleFollow(model, false)" class="pull-right">UnFollow</button>
                 </div>
             </footer>
         </ng-container>
@@ -60,8 +62,10 @@
                     </p>
                 </div>
                 <div *ngIf="options._id !== selfId">
-                    <button *ngIf="!options.iFollow" (click)="toggleFollow(model, true)" class="btn btn-sm btn-success pull-right">Follow</button>
-                    <button *ngIf="options.iFollow" (click)="toggleFollow(model, false)" class="btn btn-sm btn-danger pull-right">UnFollow</button>
+                    <button mat-button mat-raised-button color="primary" *ngIf="!options.iFollow"
+                        (click)="toggleFollow(model, true)" class="pull-right">Follow</button>
+                    <button mat-button mat-raised-button color="primary" *ngIf="options.iFollow"
+                        (click)="toggleFollow(model, false)" class="pull-right">UnFollow</button>
                 </div>
             </footer>
         </ng-container>
@@ -89,8 +93,10 @@
                     </p>
                 </div>
                 <div *ngIf="options._id !== selfId">
-                    <button *ngIf="!options.iFollow" (click)="toggleFollow(model, true)" class="btn btn-sm btn-success pull-right">Follow</button>
-                    <button *ngIf="options.iFollow" (click)="toggleFollow(model, false)" class="btn btn-sm btn-danger pull-right">UnFollow</button>
+                    <button mat-button mat-raised-button color="primary" *ngIf="!options.iFollow"
+                        (click)="toggleFollow(model, true)" class="pull-right">Follow</button>
+                    <button mat-button mat-raised-button color="primary" *ngIf="options.iFollow"
+                        (click)="toggleFollow(model, false)" class="pull-right">UnFollow</button>
                 </div>
             </footer>
         </ng-container>

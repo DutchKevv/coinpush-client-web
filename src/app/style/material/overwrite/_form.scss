@@ -110,3 +110,32 @@ input:-webkit-autofill:active  {
     color: white !important;
     -webkit-text-fill-color: white !important;
 }
+
+input::placeholder {
+    color: black
+}
+
+.mat-form-field--flat {
+    margin: 0;
+
+    .mat-form-field-wrapper {
+		// padding: 0 !important;
+	}
+}
+
+.mat-form-field--dark {
+
+    &.mat-focused {
+        .mat-form-field-label-wrapper label {
+            color: black !important;
+        }
+    }
+    
+    .mat-form-field-label-wrapper label {
+        color: black !important;
+    }
+
+    input {
+        color: black !important;
+    }
+}

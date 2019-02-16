@@ -7,6 +7,12 @@ services:
       - NODE_ENV=development
     ports:
       - 4200:4200
+      - 49153:49153
     command: npm start
     volumes:
-       - ./src:/usr/src/app/client-web/src
+      - ./package.json:/usr/src/app/client-web/package.json
+      - ./tsconfig.json:/usr/src/app/client-web/tsconfig.json
+      - ./angular.json:/usr/src/app/client-web/angular.json
+      - ./src:/usr/src/app/client-web/src
+      - ../coinpush-shared/:/src/usr/src/app/coinpush-shared
+       

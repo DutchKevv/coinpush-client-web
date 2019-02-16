@@ -25,6 +25,7 @@ export class CommentBoxComponent implements OnInit, OnDestroy {
 
 	public placeholderText: string = 'Share your ideas';
 	public images$ = new BehaviorSubject([]);
+	public busy$: EventEmitter<boolean> = new EventEmitter;
 
 	constructor(
 		private _commentService: CommentService, 

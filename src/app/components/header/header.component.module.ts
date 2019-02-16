@@ -11,12 +11,12 @@ import { NormalizeImageUrlPipeModule } from '../../pipes/normalize-image.pipe.mo
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule,
     ReactiveFormsModule,
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
     NotificationMenuComponentModule,
-    RouterModule,
     NormalizeImageUrlPipeModule
   ],
   entryComponents: [],

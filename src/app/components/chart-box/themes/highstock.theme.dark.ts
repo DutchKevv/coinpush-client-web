@@ -1,8 +1,5 @@
 import * as HighStock from "highcharts/highstock";
 
-// Apply the theme
-// HighStock.setOptions(HighStock.theme);
-
 const HighstockTheme = {
     title: {
         text: ''
@@ -37,10 +34,6 @@ const HighstockTheme = {
 
     credits: {
         enabled: false
-    },
-
-    tooltip: {
-        crosshairs: false
     },
 
     labels: {
@@ -150,7 +143,8 @@ const HighstockTheme = {
         style: {
             color: '#F0F0F0'
         },
-        animation: false
+        animation: false,
+        crosshairs: false
     },
     plotOptions: {
         series: {
@@ -252,4 +246,4 @@ const HighstockTheme = {
 };
 
 // // console.log(window.Highcharts);
-HighStock.setOptions(HighstockTheme);
+HighStock.setOptions(<any>HighstockTheme);

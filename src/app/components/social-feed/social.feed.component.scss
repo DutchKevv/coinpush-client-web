@@ -2,16 +2,9 @@
 @import '~bootstrap/scss/_variables';
 @import '~bootstrap/scss/_mixins';
 @import '~bootstrap/scss/_grid';
-@import '~bootstrap/scss/_buttons';
-@import '~bootstrap/scss/_forms';
-@import '~bootstrap/scss/_modal';
-@import '~bootstrap/scss/_close';
-@import '~bootstrap/scss/_transitions';
 @import '~bootstrap/scss/utilities/_display';
 
-@import '../../style/sprite/spritesheet';
 @import '../../style/variables/variables';
-@import '../../style/helpers/spinner';
 
 .g-username,
 .g-link {
@@ -220,13 +213,18 @@ article {
 				}
 			}
 
-			i {
+			mat-icon {
+				font-size: 16px;
+				height: 16px;
+				color: black;
+				vertical-align: bottom;
 				margin-left: 5px;
 			}
 		}
 
 		.child-row {
-			background: #ececec;
+			// background: #ececec;
+			background: #d9d9d9;
 			border-bottom: 1px solid #fff;
 			padding: 5px;
 			//border-bottom: 1px solid $border-color-light;
@@ -245,6 +243,13 @@ article {
 
 			.child-buttons {
 				margin-top: 2px;
+
+				mat-icon {
+					font-size: 14px;
+					height: 14px;
+					color: black;
+					vertical-align: bottom;
+				}
 			}
 		}
 
@@ -267,16 +272,16 @@ article {
 			margin-left: 5px;
 		}
 
-		.comment-input {
+		// .comment-input {
 
-			input {
-				margin-top: 2px;
-				width: 100%;
-				border-radius: 4px;
-				border: 1px solid grey;
-				padding: 6px 10px;
-			}
-		}
+		// 	input {
+		// 		margin-top: 2px;
+		// 		width: 100%;
+		// 		border-radius: 4px;
+		// 		border: 1px solid grey;
+		// 		padding: 6px 10px;
+		// 	}
+		// }
 
 		a {
 			//margin-right: 10px;

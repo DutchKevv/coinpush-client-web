@@ -40,34 +40,6 @@
         body.app.ios {
             padding-bottom: calc(env(safe-area-inset-bottom) + 80px);
         }
-
-        body > .spinner {
-            position: absolute;
-            top: calc(50% - 40px);
-            left: calc(50% - 30px);
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        @keyframes fadeIn {
-            100% {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeOut {
-            100% {
-                opacity: 0;
-            }
-        }
     </style>
 
     <!-- inject:js:adsense -->

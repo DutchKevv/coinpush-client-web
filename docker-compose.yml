@@ -10,3 +10,4 @@ services:
       dockerfile: ./coinpush-client-web/Dockerfile
     volumes:
       - /usr/src/app/client-web/node_modules
+    tty: true

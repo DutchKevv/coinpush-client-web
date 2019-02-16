@@ -3,10 +3,15 @@ import {
 	Component, OnDestroy, ElementRef, Input, ViewChild,
 	AfterViewInit, NgZone, ChangeDetectionStrategy, ChangeDetectorRef, HostListener
 } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { IndicatorService } from '../../services/indicator.service';
+import { SymbolListService } from '../../services/symbol-list.service';
+import { ConfigService } from '../../services/config/config.service';
+import { StorageService } from '../../services/storage.service';
+import { AccountService } from '../../services/account/account.service';
 import { CacheService } from '../../services/cache.service';
 import { SymbolModel } from "../../models/symbol.model";
 import { EventService } from '../../services/event.service';
-import { BehaviorSubject } from 'rxjs';
 import { CUSTOM_EVENT_TYPE_ALARM, CUSTOM_EVENT_TYPE_PRICE, CUSTOM_EVENT_TYPE_ALARM_NEW, WINDOW_SIZE_MAX_MOBILE } from 'coinpush/src/constant';
 import { EventModel } from '../../models/event.model';
 
@@ -32,12 +37,7 @@ require('highcharts/indicators/zigzag')(HighStock);
 
 // bollingerBands(HighStock);
 // ema(HighStock);
-import '../../../etc/custom/js/highcharts/highstock.theme.dark.js';
-import { IndicatorService } from '../../services/indicator.service';
-import { SymbolListService } from '../../services/symbol-list.service';
-import { ConfigService } from '../../services/config/config.service';
-import { StorageService } from '../../services/storage.service';
-import { AccountService } from '../../services/account/account.service';
+import './themes/highstock.theme.dark';
 
 const SERIES_MAIN_NAME = 'main';
 const SERIES_VOLUME_NAME = 'volume';

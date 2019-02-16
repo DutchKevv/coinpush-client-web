@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, Pipe, PipeTransform, OnDestroy, ChangeDetectorRef, ViewEncapsulation, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import { UserService } from '../../services/user.service';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, OnDestroy, ChangeDetectorRef, OnChanges, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { CommentService } from "../../services/comment.service";
 import { BehaviorSubject } from "rxjs";
@@ -7,18 +6,9 @@ import { CommentModel } from "../../models/comment.model";
 import { CacheService } from '../../services/cache.service';
 import { ConfigService } from '../../services/config/config.service';
 import { AccountService } from '../../services/account/account.service';
+import { linkify } from './pipes/parse-comment.pipe';
 
-const MAX_COMMENT_LENGTH = 400;
 const SCROLL_LOAD_TRIGGER_OFFSET = 800;
-
-// function shortify(inputText: string) {
-// 	if (inputText.length > 100) {
-// 		const preText = inputText.substring(0, 100);
-// 		inputText = preText + '<a>sdf</a><span style="display: none">' + inputText.substring(100) + '</span>';
-// 	}
-
-// 	return inputText;
-// }
 
 export class FilterModel {
 	sources = [];
@@ -144,9 +134,10 @@ export class SocialFeedComponent implements OnInit, OnDestroy, OnChanges {
 		this.changeDetectorRef.detectChanges();
 	}
 
-	public onClickShowMoreText(model: CommentModel, event): void {
-		event.target.previousElementSibling.innerHTML = linkify(model.options.content);
-		event.target.parentNode.removeChild(event.target);
+	public onClickShowMoreText(model: CommentModel, event: MouseEvent): void {
+		const target = <HTMLElement>event.target;
+		target.previousElementSibling.innerHTML = linkify(model.options.content);
+		target.parentNode.removeChild(target);
 	}
 
 	public reload(): Promise<void> {
@@ -286,17 +277,6 @@ export class SocialFeedComponent implements OnInit, OnDestroy, OnChanges {
 	}
 }
 
-@Pipe({ name: 'parseCommentContent' })
-export class ParseCommentContentPipe implements PipeTransform {
-	transform(value: string, field: string): string {
-		value = linkify(value);
-
-		if (value.length > MAX_COMMENT_LENGTH)
-			return value.substring(0, MAX_COMMENT_LENGTH) + ' ...';
-
-		return value;
-	}
-}
 
 const AD_ARTICLE_HTML = `
 		<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-1181429338292864"
@@ -308,26 +288,8 @@ const AD_FEED_HTML = `
 		  data-ad-slot="6793790015" data-adtest="on"></ins>
 		`;
 
-function linkify(inputText) {
-	var replacedText, replacePattern1, replacePattern2, replacePattern3;
-
-	//URLs starting with http://, https://, or ftp://
-	replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
-	replacedText = inputText.replace(replacePattern1, '<a href="$1" target="_blank" class="g-link">$1</a>');
-
-	//URLs starting with "www." (without // before it, or it'd re-link the ones done above).
-	replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
-	replacedText = replacedText.replace(replacePattern2, '$1<a href="http://$2" target="_blank" class="g-link">$2</a>');
-
-	//Change email addresses to mailto:: links.
-	replacePattern3 = /(([a-zA-Z0-9\-\_\.])+@[a-zA-Z\_]+?(\.[a-zA-Z]{2,6})+)/gim;
-	replacedText = replacedText.replace(replacePattern3, '<a href="mailto:$1" class="g-link">$1</a>');
-
-	return replacedText;
-}
-
 function getRandomNumber(until: number, without: Array<number> = []) {
-	let number, maxTries = 10, i = 0;
+	let number: number, maxTries = 10, i = 0;
 
 	do {
 		number = Math.floor(Math.random() * until) + 1;
