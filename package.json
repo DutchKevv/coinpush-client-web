@@ -18,7 +18,9 @@
     "build-spritesheet": "node ./tools/build-spritesheet.js",
     "show-report": "webpack-bundle-analyzer ../static/clients/web/stats.json",
     "d-build": "docker-compose build",
-    "d-build-prod": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml build --no-cache"
+    "d-build-prod": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml build --no-cache",
+    "k-delete-pod": "kubectl delete deployment cp-client-web-pod || true",
+    "k-create-pod": "kubectl create -f deployment.yml"
   },
   "author": "HK Brandsma",
   "license": "Apache-2.0",

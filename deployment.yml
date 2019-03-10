@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cp-client-web-pod
+spec:
+  selector:
+    matchLabels:
+      app: coinpush
+  template:
+    metadata:
+      name: client-web
+      labels:
+        app: coinpush
+    spec:
+      volumes:
+        - name: package-json
+          hostPath:
+            path: /coinpush/coinpush-client-web/package.json
+            type: File
+        - name: client-web-src
+          hostPath:
+            path: /coinpush/coinpush-client-web/src
+        # - name: shared
+        #   hostPath:
+        #     path: '/usr/src/app/coinpush-shared/src'
+        #     type: Directory
+      containers:
+        - name: client-web
+          imagePullPolicy: Never 
+          image: registry.coinpush.app/client-web
+          command: ["npm", "start"]
+          ports:
+            - containerPort: 4200
+              hostPort: 4200
+          volumeMounts:
+            - name: package-json
+              mountPath: /usr/src/app/client-web/package.json
+            - name: client-web-src
+              mountPath: /usr/src/app/client-web/src
+            # - name: shared
+            #   mountPath: /C/Users/kewin/Projects/coinpush/coinpush-shared/src
+          resources:
+            requests:
+              memory: "2000Mi"
+            limits:
+              memory: "4000Mi"
