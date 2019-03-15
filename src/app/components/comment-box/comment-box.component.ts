@@ -1,11 +1,7 @@
 import {
-	ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild,
-	ViewEncapsulation
-} from '@angular/core';
-import { CommentService } from "../../services/comment.service";
-import { Subject, BehaviorSubject } from "rxjs";
-import { CommentModel } from "../../models/comment.model";
-import { UserService } from "../../services/user.service";
+	ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
+import { CommentService, IComment } from "../../services/comment/comment.service";
+import { BehaviorSubject } from "rxjs";
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -18,7 +14,7 @@ import { HttpClient } from '@angular/common/http';
 export class CommentBoxComponent implements OnInit, OnDestroy {
 
 	@Input() userId: string;
-	@Output() public newMessage: EventEmitter<CommentModel> = new EventEmitter();
+	@Output() public newMessage: EventEmitter<IComment> = new EventEmitter();
 
 	@ViewChild('content') private _contentRef: ElementRef;
 	@ViewChild('uploadBtn') uploadBtn: ElementRef;
@@ -29,7 +25,6 @@ export class CommentBoxComponent implements OnInit, OnDestroy {
 
 	constructor(
 		private _commentService: CommentService, 
-		private _userService: UserService,
 		private _http: HttpClient
 		) {
 	}

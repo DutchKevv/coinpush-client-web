@@ -1,7 +1,7 @@
-FROM mhart/alpine-node:11.9.0
+FROM mhart/alpine-node:11.11.0
 
-RUN apk update && apk upgrade && \
-    apk add --no-cache bash git openssh
+# RUN apk update && apk upgrade && \
+#     apk add --no-cache bash git openssh
 
 # shared
 COPY /coinpush-shared /usr/src/app/coinpush-shared

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { USER_FETCH_TYPE_PROFILE_SETTINGS } from 'coinpush/src/constant';
+import { USER_FETCH_TYPE_PROFILE_SETTINGS } from '@coinpush/shared/src/constant';
 import { UserModel } from '../../models/user.model';
 import { AuthService } from '../../services/auth/auth.service';
 import { AlertService } from '../../services/alert.service';

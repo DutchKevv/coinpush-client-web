@@ -4,7 +4,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { SocketService } from './socket.service';
 import { map } from 'rxjs/operators';
 
-import { INotification } from 'coinpush/src/interface/notification.interface';
+import { INotification } from '@coinpush/shared/src/interface/notification.interface';
 import { DateService } from './date.service';
 import { ConfigService } from './config/config.service';
 

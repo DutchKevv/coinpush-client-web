@@ -9,7 +9,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "ng serve --proxy-config ./src/proxy.conf.json --host 0.0.0.0 --poll 100",
+    "start": "ng serve --proxy-config ./src/proxy.conf.json",
     "build": "npm run prod",
     "prod": "ng build --prod --no-progress",
     "build-stats": "ng build --build-optimizer --prod --aot --stats-json --output-hashing=none && npm run show-report",
@@ -19,26 +19,31 @@
     "show-report": "webpack-bundle-analyzer ../static/clients/web/stats.json",
     "d-build": "docker-compose build",
     "d-build-prod": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml build --no-cache",
+    "d-start": "docker-compose up",
+    "d-prod": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up",
+    "d-kill": "docker-compose kill",
+    "d-rm": "docker-compose rm -f",
+    "d-log": "docker-compose logs -f --tail=20",
     "k-delete-pod": "kubectl delete deployment cp-client-web-pod || true",
     "k-create-pod": "kubectl create -f deployment.yml"
   },
   "author": "HK Brandsma",
   "license": "Apache-2.0",
   "dependencies": {
-    "@angular-devkit/build-angular": "0.14.0-beta.0",
+    "@angular-devkit/build-angular": "0.800.0-beta.7",
     "@angular/animations": "^8.0.0-beta.4",
     "@angular/cdk": "^7.3.2",
-    "@angular/cli": "8.0.0-beta.0",
-    "@angular/common": "8.0.0-beta.4",
-    "@angular/compiler": "8.0.0-beta.4",
-    "@angular/compiler-cli": "8.0.0-beta.4",
-    "@angular/core": "8.0.0-beta.4",
-    "@angular/forms": "8.0.0-beta.4",
-    "@angular/material": "7.3.2",
-    "@angular/platform-browser": "8.0.0-beta.4",
-    "@angular/router": "8.0.0-beta.4",
+    "@angular/cli": "8.0.0-beta.7",
+    "@angular/common": "8.0.0-beta.8",
+    "@angular/compiler": "8.0.0-beta.8",
+    "@angular/compiler-cli": "8.0.0-beta.8",
+    "@angular/core": "8.0.0-beta.8",
+    "@angular/forms": "8.0.0-beta.8",
+    "@angular/material": "7.3.4",
+    "@angular/platform-browser": "8.0.0-beta.8",
+    "@angular/router": "8.0.0-beta.8",
     "bootstrap": "4.3.1",
-    "coinpush": "file:../coinpush-shared/",
+    "@coinpush/shared": "file:../coinpush-shared",
     "deepmerge": "3.2.0",
     "highcharts": "7.0.3",
     "localforage": "1.7.3",
@@ -49,7 +54,7 @@
     "zone.js": "0.8.29"
   },
   "devDependencies": {
-    "tslint": "5.12.1",
-    "webpack-bundle-analyzer": "3.0.4"
+    "tslint": "5.14.0",
+    "webpack-bundle-analyzer": "3.1.0"
   }
 }

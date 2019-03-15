@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 import { AlertService } from '../../services/alert.service';
 import { UserService } from '../../services/user.service';
-import { G_ERROR_DUPLICATE_FIELD, G_ERROR_MISSING_FIELD } from 'coinpush/src/constant';
+import { G_ERROR_DUPLICATE_FIELD, G_ERROR_MISSING_FIELD } from '@coinpush/shared/src/constant';
 import { LocationStrategy } from '@angular/common';
 import { IModalComponent } from '../modal/modal.component';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';

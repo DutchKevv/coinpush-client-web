@@ -1,5 +1,5 @@
 import { BaseModel } from './base.model';
-import { LEVERAGE_TYPE_1 } from 'coinpush/src/constant';
+import { LEVERAGE_TYPE_1 } from '@coinpush/shared/src/constant';
 
 export class UserModel extends BaseModel {
 	public static readonly DEFAULTS: any = {

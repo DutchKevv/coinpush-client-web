@@ -12,7 +12,7 @@ import { AccountService } from '../../services/account/account.service';
 import { CacheService } from '../../services/cache.service';
 import { SymbolModel } from "../../models/symbol.model";
 import { EventService } from '../../services/event.service';
-import { CUSTOM_EVENT_TYPE_ALARM, CUSTOM_EVENT_TYPE_PRICE, CUSTOM_EVENT_TYPE_ALARM_NEW, WINDOW_SIZE_MAX_MOBILE } from 'coinpush/src/constant';
+import { CUSTOM_EVENT_TYPE_ALARM, CUSTOM_EVENT_TYPE_PRICE, CUSTOM_EVENT_TYPE_ALARM_NEW, WINDOW_SIZE_MAX_MOBILE } from '@coinpush/shared/src/constant';
 import { EventModel } from '../../models/event.model';
 
 // for some reason typescript gives all kind of errors when using the @types/node package

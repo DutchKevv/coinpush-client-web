@@ -1,20 +1,43 @@
-# editors
-.DS_Store
-.idea/
-.vscode/
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
-# dirs
-node_modules
-dist
-/_data
-.tmp
-_log
-# server-*/dist
+# compiled output
+/dist
+/tmp
 
-# files
+# dependencies
+/node_modules
+
+# profiling files
+chrome-profiler-events.json
+speed-measure-plugin.json
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
 npm-debug.log
-*.map
-log.txt
-**/src/**/*.js
-**/src/**/*.map
-.gradle
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db

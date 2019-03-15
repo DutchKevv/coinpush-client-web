@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, OnInit, OnDestroy, ChangeDetectorRef } from "@angular/core";
 import { SymbolListService } from "../../services/symbol-list.service";
-import { CUSTOM_EVENT_TYPE_ALARM_NEW } from 'coinpush/src/constant';
+import { CUSTOM_EVENT_TYPE_ALARM_NEW } from '@coinpush/shared/src/constant';
 
 @Component({
 	selector: 'chart-overview',

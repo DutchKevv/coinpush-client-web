@@ -7,7 +7,7 @@
   },
   "include": [
     "./src/**/*.ts",
-    "../coinpush-shared/**/*.ts"
+    "../coinpush-shared/src/**/*.ts"
   ],
   "angularCompilerOptions": {
     "entryModule": "app/app.module#AppModule",

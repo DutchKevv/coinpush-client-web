@@ -13,7 +13,7 @@ import { UserService } from '../../services/user.service';
 import { SymbolModel } from '../../models/symbol.model';
 import { SymbolListService } from '../../services/symbol-list.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SYMBOL_CAT_TYPE_RESOURCE, SYMBOL_CAT_TYPE_CRYPTO, BROKER_GENERAL_TYPE_OANDA, BROKER_GENERAL_TYPE_CC } from 'coinpush/src/constant';
+import { SYMBOL_CAT_TYPE_RESOURCE, SYMBOL_CAT_TYPE_CRYPTO, BROKER_GENERAL_TYPE_OANDA, BROKER_GENERAL_TYPE_CC } from '@coinpush/shared/src/constant';
 import { EventService } from '../../services/event.service';
 import { StorageService } from '../../services/storage.service';
 import { AccountService } from '../../services/account/account.service';

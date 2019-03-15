@@ -4,7 +4,7 @@ import { Router, NavigationStart, NavigationExtras, ActivationEnd } from '@angul
 import { AuthService } from '../../services/auth/auth.service';
 import { UserService } from '../../services/user.service';
 import { BehaviorSubject } from 'rxjs';
-import { INotification } from 'coinpush/src/interface/notification.interface';
+import { INotification } from '@coinpush/shared/src/interface/notification.interface';
 import { AccountService } from '../../services/account/account.service';
 
 @Component({

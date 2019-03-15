@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, OnDestroy, ChangeDetectorRef, OnChanges, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { CommentService } from "../../services/comment.service";
+import { CommentService, IComment } from "../../services/comment/comment.service";
 import { BehaviorSubject } from "rxjs";
-import { CommentModel } from "../../models/comment.model";
 import { CacheService } from '../../services/cache.service';
 import { ConfigService } from '../../services/config/config.service';
 import { AccountService } from '../../services/account/account.service';
@@ -26,7 +25,7 @@ export class SocialFeedComponent implements OnInit, OnDestroy, OnChanges {
 	@Input() public scrollHandle: HTMLElement;
 	@Input() public filterModel: FilterModel;
 
-	public comments$: BehaviorSubject<Array<CommentModel>> = new BehaviorSubject([]);
+	public comments$: BehaviorSubject<Array<IComment>> = new BehaviorSubject([]);
 	public isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
 	public userId: string;
@@ -69,18 +68,18 @@ export class SocialFeedComponent implements OnInit, OnDestroy, OnChanges {
 		event.currentTarget.parentNode.parentNode.querySelector('input').focus();
 	}
 
-	public addMessage(model) {
+	public addMessage(model: IComment) {
 		const current = Array.from(this.comments$.getValue());
 
-		if (model.options.parentId)
-			current.find(c => c.options._id === model.options.parentId).options.children.push(model);
+		if (model.parentId)
+			current.find(c => c._id === model.parentId).children.push(model);
 		else
 			current.unshift(model);
 
 		this.comments$.next(current);
 	}
 
-	public async toggleLike(model: CommentModel) {
+	public async toggleLike(model: IComment) {
 		await this.commentService.toggleLike(model);
 		this.changeDetectorRef.detectChanges();
 	}
@@ -96,16 +95,16 @@ export class SocialFeedComponent implements OnInit, OnDestroy, OnChanges {
 		}
 	}
 
-	public async respond(event, parentModel: CommentModel) {
+	public async respond(event, parentModel: IComment) {
 		const input = event.currentTarget;
 		input.setAttribute('disabled', true);
-		const comment = await this.commentService.create(parentModel.options.toUser, parentModel.options._id, input.value, []);
+		const comment = await this.commentService.create(parentModel.toUser, parentModel._id, input.value, []);
 		input.removeAttribute('disabled');
 
 		if (!comment)
 			return;
 
-		parentModel.options.childCount++;
+		parentModel.childCount++;
 		input.value = '';
 
 		this.addMessage(comment);
@@ -115,28 +114,28 @@ export class SocialFeedComponent implements OnInit, OnDestroy, OnChanges {
 
 	}
 
-	public showMorePostActions(comment: CommentModel) {
+	public showMorePostActions(comment: IComment) {
 		console.log('more')
 	}
 
-	public showMoreCommentActions(comment: CommentModel) {
+	public showMoreCommentActions(comment: IComment) {
 		console.log('more')
 	}
 
 	public trackByFn(index, item) {
-		return item.options._id; // or item.id
+		return item._id; // or item.id
 	}
 
 
-	public async loadMoreChildren(parentModel: CommentModel): Promise<void> {
-		const children = <any>await this.commentService.findChildren(parentModel.options._id, parentModel.options.children.length);
-		parentModel.options.children = children.concat(parentModel.options.children);
+	public async loadMoreChildren(parentModel: IComment): Promise<void> {
+		const children = <any>await this.commentService.findChildren(parentModel._id, parentModel.children.length);
+		parentModel.children = children.concat(parentModel.children);
 		this.changeDetectorRef.detectChanges();
 	}
 
-	public onClickShowMoreText(model: CommentModel, event: MouseEvent): void {
+	public onClickShowMoreText(model: IComment, event: MouseEvent): void {
 		const target = <HTMLElement>event.target;
-		target.previousElementSibling.innerHTML = linkify(model.options.content);
+		target.previousElementSibling.innerHTML = linkify(model.content);
 		target.parentNode.removeChild(target);
 	}
 
@@ -195,7 +194,7 @@ export class SocialFeedComponent implements OnInit, OnDestroy, OnChanges {
 	 * Add advertisings, alerts etc in between comments
 	 * @param comments 
 	 */
-	private _mixComments(comments: Array<CommentModel>): void {
+	private _mixComments(comments: IComment[]): void {
 		let risersFallersNr = Math.floor(comments.length / 5);
 		const positions = [];
 
@@ -208,7 +207,7 @@ export class SocialFeedComponent implements OnInit, OnDestroy, OnChanges {
 		this._mixAds(comments);
 	}
 
-	private _mixAds(comments: Array<CommentModel>): void {
+	private _mixAds(comments: IComment[]): void {
 		if (this._configService.platform.isApp) {
 			// const banner = window['AdMob'].createBanner({
 			// 	adSize: window['AdMob'].AD_SIZE.MEDIUM_RECTANGLE,
@@ -222,10 +221,10 @@ export class SocialFeedComponent implements OnInit, OnDestroy, OnChanges {
 
 			// console.log(banner);
 		} else {
-			const ad = new CommentModel({
+			const ad: IComment = {
 				type: 'ad',
 				content: 'DFDFDF'
-			});
+			};
 
 			comments.push(ad);
 
@@ -239,7 +238,7 @@ export class SocialFeedComponent implements OnInit, OnDestroy, OnChanges {
 	}
 
 	// risers and fallers
-	private _mixRiserFallers(comments: Array<CommentModel>, position?: number): void {
+	private _mixRiserFallers(comments: IComment[], position?: number): void {
 		position = position || getRandomNumber(comments.length);
 
 		const sortedByDayAmount = this._cacheService.symbols.sort((a, b) => a.options.changedDAmount - b.options.changedDAmount);
@@ -248,14 +247,14 @@ export class SocialFeedComponent implements OnInit, OnDestroy, OnChanges {
 		const randomUpSymbolModel = risers[Math.floor(Math.random() * risers.length)];
 		const randomDownSymbolModel = fallers[Math.floor(Math.random() * fallers.length)];
 
-		const commentModel = new CommentModel({
+		const commentModel = {
 			data: {
 				symbolUpModel: randomUpSymbolModel,
 				symbolDownModel: randomDownSymbolModel
 			},
 			type: 'intel-momentum',
 			content: ''
-		});
+		};
 
 		comments.splice(position, 0, commentModel);
 	}

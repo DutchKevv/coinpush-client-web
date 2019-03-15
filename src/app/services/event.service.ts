@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { CommentModel, IComment } from '../models/comment.model';
 import { AlertService } from './alert.service';
 import { UserService } from "./user.service";
 import { CacheService } from './cache.service';
@@ -9,6 +8,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { map } from 'rxjs/operators';
 import { DateService } from './date.service';
+import { IComment } from './comment/comment.service';
 
 @Injectable({
 	providedIn: 'root',
@@ -69,14 +69,9 @@ export class EventService {
 	 * 
 	 * @param id 
 	 */
-	public async findById(id: string): Promise<Array<CommentModel>> {
+	public async findById(id: string): Promise<Array<IComment>> {
 		const result = <any>await this._http
 			.get('/event/' + id)
-			.pipe(map((r: IComment) => {
-				const model = new CommentModel(r);
-				model.options.children = model.options.children.map(c => new CommentModel(c));
-				return model;
-			}))
 			.toPromise();
 
 		return result;
@@ -112,8 +107,8 @@ export class EventService {
 	 * @param model 
 	 * @param options 
 	 */
-	public update(model: CommentModel, options): Observable<Response> {
-		return <any>this._http.put('/event/' + model.get('_id'), options);
+	public update(model: IComment, options): Observable<Response> {
+		return <any>this._http.put('/event/' + model._id, options);
 	}
 
 	/**

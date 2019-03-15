@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { map } from 'rxjs/operators';
-import { G_ERROR_DUPLICATE_FIELD } from 'coinpush/src/constant';
+import { G_ERROR_DUPLICATE_FIELD } from '@coinpush/shared/src/constant';
 import { AccountService } from './account/account.service';
 
 @Injectable({

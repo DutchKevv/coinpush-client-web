@@ -16,7 +16,7 @@ export class ParseCommentContentPipe implements PipeTransform {
 	}
 }
 
-export function linkify(inputText) {
+export function linkify(inputText: string): string {
     let replacedText: string, 
         replacePattern1: RegExp, 
         replacePattern2: RegExp, 
