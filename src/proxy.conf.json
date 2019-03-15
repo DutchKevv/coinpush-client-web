@@ -1,11 +1,11 @@
 {
     "/api/*": {
-        "target": "http://gateway:3100",
+        "target": "http://localhost:3100",
         "secure": false,
         "logLevel": "debug"
     },
     "/socket.io/*": {
-        "target": "http://gateway:3100",
+        "target": "http://localhost:3100",
         "secure": false,
         "logLevel": "debug",
         "ws":true
